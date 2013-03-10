@@ -1,5 +1,8 @@
 #! /bin/bash
 
+# Status report creation script  ver 0.1
+# Written by Kevin Neely, see the LICENSE file included in the repository.
+
 DATE=`date +%Y-%m-%d`
 REPORT=status-$DATE
 #alias t='~ktneely/bin/todo'
