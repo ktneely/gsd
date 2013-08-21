@@ -23,16 +23,22 @@ echo "--------------------------------------" >> $REPORT
 echo " " >> $REPORT
 echo "Accomplishments:" >> $REPORT
 echo "----------------" >> $REPORT
-~ktneely/bin/todo -p lately >> $REPORT
+~ktneely/bin/todo -p lately |egrep -v FYI >> $REPORT
 
 echo " "  >> $REPORT 
 echo "Open Todo items:" >> $REPORT
 echo "----------------" >> $REPORT
 ~ktneely/bin/todo -p projectview -@waiting -@topic |egrep -v ===== >> $REPORT
 
+echo " "
 echo "General FYI:" >> $REPORT
-echo "-------------------" >> $REPORT
-echo "none at this time" >> $REPORT
+echo "------------" >> $REPORT
+if [ -e `~ktneely/bin/todo -p lately |egrep FYI` ];
+    then
+    echo "none at this time"
+else
+    ~ktneely/bin/todo -p lately |egrep FYI >> $REPORT
+fi
 
 echo " " >> $REPORT
 echo "Upcoming PTO & Training:" >> $REPORT
